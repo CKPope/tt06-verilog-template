@@ -49,45 +49,45 @@ begin
      case (current_state)	  
 				INITIALIZE1: 
 				begin		
-               next_state <= INITIALIZE2;
+               next_state = INITIALIZE2;
             end
 				
 				INITIALIZE2: 
 				begin		
-               next_state <= AT_REST;
+               next_state = AT_REST;
             end
 				
 				AT_REST: 
 				begin		
 					if (motion) 
-               next_state <= CAPTURE_XY;
+               next_state = CAPTURE_XY;
 					else 
-               next_state <= AT_REST;
+               next_state = AT_REST;
             end
 				
 				CAPTURE_XY: 
 				begin		
 					if (motion) 
-               next_state <= CAPTURE_XY; // stay here until MOTION goes off. Then go to IN_MOTION
+               next_state = CAPTURE_XY; // stay here until MOTION goes off. Then go to IN_MOTION
 					else
-               next_state <= IN_MOTION;
+               next_state = IN_MOTION;
             end
 				
 				IN_MOTION:
 				begin
 					if ((x_comp_eq) & (y_comp_eq))
-               next_state <= XY_REACHED;
+               next_state = XY_REACHED;
 					else
-					next_state <= IN_MOTION;
+					next_state = IN_MOTION;
             end
 
            XY_REACHED:
 			  begin
-					next_state <= AT_REST;
+					next_state = AT_REST;
 				end
 							 
 			  default:
-               next_state <= AT_REST;
+               next_state = AT_REST;
  		endcase
  end
 
@@ -97,50 +97,50 @@ begin
  begin
 	if (current_state == INITIALIZE1)		// force outside counters to be initialized to zero for first state
 			begin
-				init			<= 1'b1;
-				x_count_en 	<= 1'b0;
-				x_up1_dwn0  <= 1'b0;				
-				y_count_en 	<= 1'b0;
-				y_up1_dwn0  <= 1'b0;				
-				capt_enbl 	<= 1'b0;
+				init			= 1'b1;
+				x_count_en 	= 1'b0;
+				x_up1_dwn0  = 1'b0;				
+				y_count_en 	= 1'b0;
+				y_up1_dwn0  = 1'b0;				
+				capt_enbl 	= 1'b0;
 			end	
 
 	else if (current_state == INITIALIZE2) // keep outside counters initialized to zero for another state
 			begin
-				init			<= 1'b0;
-				x_count_en 	<= 1'b0;
-				x_up1_dwn0  <= 1'b0;				
-				y_count_en 	<= 1'b0;
-				y_up1_dwn0  <= 1'b0;				
-				capt_enbl 	<= 1'b0;
+				init			= 1'b0;
+				x_count_en 	= 1'b0;
+				x_up1_dwn0  = 1'b0;				
+				y_count_en 	= 1'b0;
+				y_up1_dwn0  = 1'b0;				
+				capt_enbl 	= 1'b0;
 			end	
 
 	else if (current_state == CAPTURE_XY) // motion button has been pressed. activate outside x/y register capture enables
 			begin
-				init			<= 1'b0;
-				x_count_en 	<= 1'b0;
-				x_up1_dwn0  <= 1'b0;				
-				y_count_en 	<= 1'b0; 
-				y_up1_dwn0  <= 1'b0;				
-				capt_enbl 	<= 1'b1;
+				init			= 1'b0;
+				x_count_en 	= 1'b0;
+				x_up1_dwn0  = 1'b0;				
+				y_count_en 	= 1'b0; 
+				y_up1_dwn0  = 1'b0;				
+				capt_enbl 	= 1'b1;
 			end	
 	else if (current_state == IN_MOTION) // motion input button release. x/Y motion is now enabled
 			begin
-				init			<= 1'b0;
-				x_count_en 	<= ((x_comp_gt) | (x_comp_lt));
-				x_up1_dwn0  <= x_comp_lt;				
-				y_count_en 	<= ((y_comp_gt) | (y_comp_lt));
-				y_up1_dwn0  <= y_comp_lt;
-				capt_enbl 	<= 1'b0;
+				init			= 1'b0;
+				x_count_en 	= ((x_comp_gt) | (x_comp_lt));
+				x_up1_dwn0  = x_comp_lt;				
+				y_count_en 	= ((y_comp_gt) | (y_comp_lt));
+				y_up1_dwn0  = y_comp_lt;
+				capt_enbl 	= 1'b0;
 			end
 	else											// default case (used in AT_REST and XY_REACHED states), is to deactivate all FSM outputs.
 			begin
-				init			<= 1'b0;
-				x_count_en 	<= 1'b0;
-				x_up1_dwn0  <= 1'b0;				
-				y_count_en 	<= 1'b0;
-				y_up1_dwn0  <= 1'b0;				
-				capt_enbl 	<= 1'b0;
+				init			= 1'b0;
+				x_count_en 	= 1'b0;
+				x_up1_dwn0  = 1'b0;				
+				y_count_en 	= 1'b0;
+				y_up1_dwn0  = 1'b0;				
+				capt_enbl 	= 1'b0;
 			end
 end
 endmodule

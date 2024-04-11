@@ -20,11 +20,11 @@ module Compx4
 
 		always @(*)
 		begin
-			a_eq_b <= aeqb[3] & aeqb[2] & aeqb[1] & aeqb[0];
+			a_eq_b = aeqb[3] & aeqb[2] & aeqb[1] & aeqb[0];
 	
-			a_gt_b <= agtb[3] | (aeqb[3] & agtb[2]) | (aeqb[3] & aeqb[2] & agtb[1]) | (aeqb[3] & aeqb[2] & aeqb[1] & agtb[0]);
+			a_gt_b = agtb[3] | (aeqb[3] & agtb[2]) | (aeqb[3] & aeqb[2] & agtb[1]) | (aeqb[3] & aeqb[2] & aeqb[1] & agtb[0]);
 	
-			a_lt_b <= altb[3] | (aeqb[3] & altb[2]) | (aeqb[3] & aeqb[2] & altb[1]) | (aeqb[3] & aeqb[2] & aeqb[1] & altb[0]);
+			a_lt_b = altb[3] | (aeqb[3] & altb[2]) | (aeqb[3] & aeqb[2] & altb[1]) | (aeqb[3] & aeqb[2] & aeqb[1] & altb[0]);
 		end
 		
 	endmodule

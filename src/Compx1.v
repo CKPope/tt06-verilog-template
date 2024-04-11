@@ -11,11 +11,11 @@ module Compx1
 
 always @(*)
 begin
-	aeqb <= (a & b) | ((!(a)) & (!(b)));
+	aeqb = (a & b) | ((!(a)) & (!(b)));
 	
-	agtb <= a & (!(b));
+	agtb = a & (!(b));
 		
-	altb <= (!(a)) & b ;
+	altb = (!(a)) & b ;
 end		
 endmodule
 	
