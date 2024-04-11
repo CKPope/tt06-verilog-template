@@ -19,8 +19,12 @@ set ::env(PL_TARGET_DENSITY) 0.6
 set ::env(CLOCK_PERIOD) "20"
 
 # Hold slack margin - Increase them in case you are getting hold violations.
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
+# ORIGINAL SETTING set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
+# ORIGINAL SETTING set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
+
+# Hold slack margin - Increase them in case you are getting hold violations.
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.15
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.1
 
 # RUN_LINTER, LINTER_INCLUDE_PDK_MODELS - Disabling the linter is not recommended!
 set ::env(RUN_LINTER) 1
