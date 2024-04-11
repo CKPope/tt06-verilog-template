@@ -16,17 +16,17 @@ set ::env(PL_TARGET_DENSITY) 0.6
 
 # CLOCK_PERIOD - Increase this in case you are getting setup time violations.
 # The value is in nanoseconds, so 20ns == 50MHz.
-#ORIGINAL SETTING set ::env(CLOCK_PERIOD) "20"
+set ::env(CLOCK_PERIOD) "20"
 # CLOCK_PERIOD - Increase this in case you are getting setup time violations.
 # The value is in nanoseconds, so 10ns == 10MHz.
-set ::env(CLOCK_PERIOD) "100"
+#set ::env(CLOCK_PERIOD) "100"
 
 # Hold slack margin - Increase them in case you are getting hold violations.
-# ORIGINAL SETTING set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
-# ORIGINAL SETTING set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
+set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.1
+set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.05
 # Hold slack margin - Increase them in case you are getting hold violations.
-set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.2
-set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.15
+#set ::env(PL_RESIZER_HOLD_SLACK_MARGIN) 0.2
+#set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.15
 
 # RUN_LINTER, LINTER_INCLUDE_PDK_MODELS - Disabling the linter is not recommended!
 set ::env(RUN_LINTER) 1
