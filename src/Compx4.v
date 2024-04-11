@@ -28,7 +28,3 @@ module Compx4
 		end
 		
 	endmodule
-	
- 
-
-	

@@ -52,7 +52,7 @@ wire y_comp_eq, y_comp_gt, y_comp_lt;
 
 //----------------------------------------------------------------
 // make Connections to infrastructure signals. clock can only run when the module is enabled (selected)
-assign clock 	= (ena * clk);
+assign clock 	= clk;
 assign reset_n = (ena * rst_n);
 
 //----------------------------------------------------------------

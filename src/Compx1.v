@@ -18,7 +18,3 @@ begin
 	altb = (!(a)) & b ;
 end		
 endmodule
-	
- 
-
-	
