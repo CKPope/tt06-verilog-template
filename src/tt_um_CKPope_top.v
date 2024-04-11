@@ -81,12 +81,12 @@ Mealy_SM xycontroller
 .capt_enbl(load_xy));
 
 //X, Y Target Capture Registers
-target_reg x_treg (.clk (clock), .load (load_xy), .data (x_target), .reset ((!reset_n | sync_reset | init_regs)), .target_reg (x_target_reg));
-target_reg y_treg (.clk (clock), .load (load_xy), .data (y_target), .reset ((!reset_n | sync_reset | init_regs)), .target_reg (y_target_reg));	 	
+target_reg x_treg (.clk (clock), .load (load_xy), .data (x_target), .reset ((sync_reset | init_regs)), .target_reg (x_target_reg));
+target_reg y_treg (.clk (clock), .load (load_xy), .data (y_target), .reset ((sync_reset | init_regs)), .target_reg (y_target_reg));	 	
 
 //X, Y Counters:
-ud_counter x_counter (.clk (clock), .count_en (x_counten), .count_up1_dwn0 (x_count_up1_dwn0), .reset ((!reset_n | sync_reset | init_regs)), .count (x_pos[3:0]));
-ud_counter y_counter (.clk (clock), .count_en (y_counten), .count_up1_dwn0 (y_count_up1_dwn0), .reset ((!reset_n | sync_reset | init_regs)), .count (y_pos[3:0]));	 	
+ud_counter x_counter (.clk (clock), .count_en (x_counten), .count_up1_dwn0 (x_count_up1_dwn0), .reset ((sync_reset | init_regs)), .count (x_pos[3:0]));
+ud_counter y_counter (.clk (clock), .count_en (y_counten), .count_up1_dwn0 (y_count_up1_dwn0), .reset ((sync_reset | init_regs)), .count (y_pos[3:0]));	 	
 
 // X, Y Comparators
 Compx4 x_comp (.a_hex(x_pos), .b_hex(x_target_reg), .a_eq_b(x_comp_eq), .a_gt_b(x_comp_gt), .a_lt_b(x_comp_lt)); 
@@ -107,7 +107,7 @@ Compx4 y_comp (.a_hex(y_pos), .b_hex(y_target_reg), .a_eq_b(y_comp_eq), .a_gt_b(
 //assign y_comp_gt_out = y_comp_gt; 
 //assign y_comp_lt_out = y_comp_lt;
 //assign y_count_up1_dwn0_out = y_count_up1_dwn0;
-//assign reset_out = !reset_n | sync_reset;
+//assign reset_out = sync_reset;
 //assign reset_n_out = reset_n;
 //assign init_regs_out = init_regs;
 //assign motion_out= sync_motion;
