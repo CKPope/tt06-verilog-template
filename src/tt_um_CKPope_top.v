@@ -53,11 +53,11 @@ wire y_comp_eq, y_comp_gt, y_comp_lt;
 //----------------------------------------------------------------
 // make Connections to infrastructure signals. clock can only run when the module is enabled (selected)
 assign clock 	= clk;
-assign reset_n = (ena * rst_n);
+assign reset_n =  rst_n;
 
 //----------------------------------------------------------------
 // make Connections to uio, ui, uo ports
-assign motion_inp = (ena * uio_in[0]);
+assign motion_inp = (uio_in[0]);
 assign x_target = ui_in[7:4];
 assign y_target = ui_in[3:0];
 assign uo_out[7:4] = x_pos[3:0];
