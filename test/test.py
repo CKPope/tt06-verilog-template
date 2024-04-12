@@ -19,14 +19,20 @@ async def test_project(dut):
   dut.ui_in.value = 0
   dut.uio_in.value = 0
   dut.rst_n.value = 0
+
+  dut._log.info("run for 10 clock cycles and then release reset")
   await ClockCycles(dut.clk, 10)
   dut.rst_n.value = 1
 
-  # Set the input values, wait one clock cycle, and check the output
+  # Set the both target inputs to 0xF values, wait one clock cycle, wait one clock cycle, then activate MOTION_Input and wait 1 clock cycle, then deactivate Motion Input, then wait 20 clock cycles, then check the output
   dut._log.info("Test")
-  dut.ui_in.value = 20
-  dut.uio_in.value = 30
-
+  dut.ui_in.value = 255
   await ClockCycles(dut.clk, 1)
-
-  assert dut.uo_out.value == 50
+  
+  dut.uio_in.value = 01
+  await ClockCycles(dut.clk, 1)
+  
+  dut.uio_in.value = 00
+  await ClockCycles(dut.clk, 20)
+  
+  assert dut.uo_out.value == 255
