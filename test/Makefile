@@ -5,7 +5,7 @@
 SIM ?= icarus
 TOPLEVEL_LANG ?= verilog
 SRC_DIR = $(PWD)/../src
-PROJECT_SOURCES = project.v
+PROJECT_SOURCES = tt_um_CKPope_top.v input_synch.v Mealy_SM.v target_reg.v ud_counter.v Compx4.v Compx1.v
 
 ifneq ($(GATES),yes)
 
