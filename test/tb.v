@@ -3,7 +3,7 @@
 /* This testbench just instantiates the module and makes some convenient wires
    that can be driven / tested by the cocotb test.py.
 */
-module tt_um_CKPope_top ();
+module tb ();
 
   // Dump the signals to a VCD file. You can view it with gtkwave.
   initial begin
@@ -23,7 +23,7 @@ module tt_um_CKPope_top ();
   wire [7:0] uio_oe;
 
   // Replace tt_um_example with your module name:
-  tt_um_example user_project (
+  tt_um_CKPope_top user_project (
 
       // Include power ports for the Gate Level test:
 `ifdef GL_TEST
