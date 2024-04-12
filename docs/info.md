@@ -10,7 +10,7 @@ You can also include images in this folder and reference them in the markdown. E
 ## How it works
 
 This design is a simple two-dimensional axis controller. It uses 4-bit wide counter, 4-bit Magnitude Comparator and a 4-bit wide target co-ordinate register for each dimension. A simple State Machine is used to acquire the target value for each dimension and then control the movement to the target co-ordinate value for each dimension in parallel operation. Comparisons of the current position and the target value for each dimension along the way and when the Traget is reached, the controller sits in a "AT-REST" state and waits for another motion directive. The Target values can change at any time after the Motion begins. New Target values will not be captured until the NEXT MOTION request. The controller can be RESET at any time with the rst_n input.
-![image](https://github.com/CKPope/tt06-verilog-template/assets/166442118/b0541ad1-0bcc-4269-ab0d-bdfa11260415)
+![image](https://github.com/CKPope/tt06-verilog-template/assets/166442118/9af8d539-68c6-49d0-91ef-edca4c9abb46)
 ![image](https://github.com/CKPope/tt06-verilog-template/assets/166442118/8d319750-3319-4897-a161-a58fdd493411)
 
 
